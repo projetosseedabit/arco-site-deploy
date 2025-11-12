@@ -26,7 +26,7 @@ export default function Header() {
             : 'bg-white/5 text-gray-800'          
         }`}>
     
-      {/* 1. Logo */}
+      {/* Logo */}
       <div className="logo">
         <Image
           src="/logoArco.svg"
@@ -37,7 +37,7 @@ export default function Header() {
         />
       </div>
 
-      {/* 2. Menu Desktop + Mobile (ALTERAÇÕES FEITAS AQUI) */}
+      {/* Menu Desktop + Menu Mobile */}
       <nav
         className={`
           flex md:flex flex-col md:flex-row items-end md:items-center md:gap-8 gap-4 
@@ -66,7 +66,7 @@ export default function Header() {
           </ul>
       </nav>
 
-      {/* 3. Botão Menu Mobile */}
+      {/* Menu Sanduíche Mobile */}
       <div
         className="flex flex-col justify-between w-6 h-4 cursor-pointer md:hidden"
         onClick={() => setMenuOpen(!menuOpen)}
