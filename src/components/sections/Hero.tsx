@@ -19,7 +19,8 @@ const Hero = () => {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-custom-gray">
               Prazer, somos a <br />
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              {/* Degradê mais "escuro" <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"></span>*/}
+              <span className="bg-gradient-to-r from-primary via-primary to-secondary bg-clip-text text-transparent">
                 Arco Consultoria
               </span>
             </h1>

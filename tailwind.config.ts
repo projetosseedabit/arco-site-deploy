@@ -12,6 +12,7 @@ const config: Config = {
       colors: {
         'custom-gray': '#1E1E1F',
         'custom-teal': '#3DBEBE',
+        'custom-dark-teal': '#2A8080',
         'custom-light-gray': '#737B8C',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
