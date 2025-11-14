@@ -77,42 +77,6 @@ export default function Header() {
         >
           Fale com a gente
         </Link>
-
-        <ul className="flex flex-col md:flex-row list-none gap-4 md:gap-8 text-[#333] md:text-inherit font-medium">
-          <li>
-            <Link href="#" className="hover:text-[#1d7a7a] ">
-              Início
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-[#1d7a7a] whitespace-nowrap">
-              Sobre nós
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-[#1d7a7a] whitespace-nowrap">
-              Serviços
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-[#1d7a7a] whitespace-nowrap">
-              Portfólio
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="hover:text-[#1d7a7a] whitespace-nowrap">
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#"
-              className="bg-[#28b9b4] text-white whitespace-nowrap px-5 py-2 rounded-lg font-medium shadow-[0_2px_6px_rgba(40,185,180,0.3)] hover:bg-[#22a19b] hover:scale-105 hover:shadow-[0_4px_10px_rgba(34,161,155,0.4)] transition"
-            >
-              Fale com a gente
-            </Link>
-          </li>
-        </ul>
       </nav>
 
       {/* Botão Menu Mobile */}
