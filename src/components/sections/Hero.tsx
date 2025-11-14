@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-[90vh] flex items-start overflow-hidden bg-hero-pattern bg-cover bg-center pt-20"
+      className="relative min-h-[90vh] flex items-start overflow-hidden bg-hero-pattern bg-cover bg-center pt-20 mt-40"
     >
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
