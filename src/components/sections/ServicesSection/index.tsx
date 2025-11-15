@@ -76,7 +76,7 @@ export default function ServicesSection() {
         </div>
 
         <p className="text-sm text-white/80 mb-6">Não encontrou o que procura? Clique em contato conosco</p>
-        <button className="inline-block text-white bg-gradient-to-r from-[#3DBEBE] to-[#A9C229] px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">Entre em Contato</button>
+        <button className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">Entre em Contato</button>
       </div>
     </section>
   )
