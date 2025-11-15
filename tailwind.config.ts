@@ -1,5 +1,6 @@
 
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   content: [
@@ -12,6 +13,7 @@ const config: Config = {
       colors: {
         'custom-gray': '#1E1E1F',
         'custom-teal': '#3DBEBE',
+        'custom-dark-teal': '#2A8080',
         'custom-light-gray': '#737B8C',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -60,7 +62,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;
