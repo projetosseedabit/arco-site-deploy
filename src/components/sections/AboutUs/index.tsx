@@ -21,12 +21,8 @@ const aboutData = [
 
 const AboutUs = () => {
   return (
-    <section id="sobre-nos" className="relative bg-transparent -mt-20 z-10 py-20 lg:py-32">
-        <div
-            className="absolute inset-x-0 -top-5 h-full bg-gradient-to-t from-white from-60% to-transparent"
-            style={{ clipPath: 'ellipse(150% 100% at 50% 100%)' }}
-        ></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="sobre-nos" className="bg-white py-20 lg:py-32">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
                 <div className="inline-block">
                     <span className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm border border-primary/20">
