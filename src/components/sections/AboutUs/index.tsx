@@ -23,7 +23,7 @@ const AboutUs = () => {
   return (
     <section id="sobre-nos" className="relative bg-transparent -mt-20 z-10 py-20 lg:py-32">
         <div
-            className="absolute inset-x-0 top-0 h-full bg-white"
+            className="absolute inset-x-0 -top-5 h-full bg-gradient-to-t from-white from-60% to-transparent"
             style={{ clipPath: 'ellipse(150% 100% at 50% 100%)' }}
         ></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
