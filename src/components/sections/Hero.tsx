@@ -7,6 +7,9 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-[90vh] flex items-start overflow-hidden bg-hero-pattern bg-cover bg-center pt-20 mt-40"
     >
+      {/* Gradient Overlay */}
+      <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent"></div>
+
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
