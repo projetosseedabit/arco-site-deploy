@@ -13,6 +13,7 @@ const config: Config = {
       colors: {
         'custom-gray': '#1E1E1F',
         'custom-teal': '#3DBEBE',
+        'custom-dark-teal': '#2A8080',
         'custom-light-gray': '#737B8C',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -58,6 +59,20 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "hero-pattern": "url('/images/hero-image.jpg')",
+      },
+      keyframes: {
+        "float-left": {
+          "0%, 100%": { transform: "translate(-50%, -50%) translateY(0px)" },
+          "50%": { transform: "translate(-50%, -50%) translateY(-20px)" },
+        },
+        "float-right": {
+          "0%, 100%": { transform: "translate(50%, -50%) translateY(0px)" },
+          "50%": { transform: "translate(50%, -50%) translateY(-20px)" },
+        },
+      },
+      animation: {
+        "float-left": "float-left 4s ease-in-out infinite",
+        "float-right": "float-right 4s ease-in-out infinite",
       },
     },
   },
