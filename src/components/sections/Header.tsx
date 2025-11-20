@@ -46,7 +46,7 @@ export default function Header() {
             : "opacity-0 -translate-y-4 pointer-events-none md:opacity-100 md:translate-y-0 md:pointer-events-auto"
         }`}
       >
-        {/* LISTA DE LINKS (Restaurada para o estilo original: text-[#333]) */}
+        {/* LISTA DE LINKS */}
         <ul className="flex flex-col md:flex-row list-none gap-4 md:gap-8 text-[#333] font-medium">
           <li>
             <Link
@@ -95,7 +95,6 @@ export default function Header() {
           </li>
         </ul>
 
-        {/* BOTÃO (Restaurado: rounded-lg, bg-[#28b9b4], SEM SOMBRA) */}
         <Link
           href="#"
           onClick={() => setMenuOpen(false)}
@@ -105,7 +104,7 @@ export default function Header() {
         </Link>
       </nav>
 
-      {/* 3. Botão Menu Hambúrguer (Mobile Only) - Com correção dos ícones */}
+      {/* 3. Botão Menu Hambúrguer */}
       <div
         className="flex flex-col justify-center items-center cursor-pointer md:hidden z-50 text-[#333]"
         onClick={() => setMenuOpen(!menuOpen)}

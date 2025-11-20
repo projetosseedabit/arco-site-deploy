@@ -5,13 +5,13 @@ type TimelineItemProps = {
   year: string;
   title: string;
   description: string;
-  position?: string; // Opcional pois no mobile não usa
-  direction?: 'up' | 'down'; // Opcional pois no mobile não usa, mas quando usa tem que ser esses valores
+  position?: string; 
+  direction?: 'up' | 'down'; 
   icon: React.ComponentType<{ size?: number; className?: string }>;
-  isLast?: boolean; // Usado no mobile
+  isLast?: boolean; 
 };
 
-// --- COMPONENTE DESKTOP (HORIZONTAL) ---
+// COMPONENTE PRO DESKTOP (HORIZONTAL) 
 const TimelineItemDesktop = ({ year, title, description, position, direction, icon: Icon }: TimelineItemProps) => {
   const itemClasses = "absolute flex flex-col items-center w-32 xl:w-40 text-center";
   const circleClasses = `w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-white border-4 border-[#3DBEBE] z-10 flex items-center justify-center shadow-md transition-transform hover:scale-110`; 
@@ -53,7 +53,7 @@ const TimelineItemDesktop = ({ year, title, description, position, direction, ic
   );
 };
 
-// --- COMPONENTE MOBILE (VERTICAL) ---
+// COMPONENTE PRO MOBILE (VERTICAL)
 const TimelineItemMobile = ({ year, title, description, icon: Icon, isLast }: TimelineItemProps) => {
   return (
     <div className="flex gap-4 relative pb-12 last:pb-0">
@@ -82,7 +82,7 @@ const TimelineItemMobile = ({ year, title, description, icon: Icon, isLast }: Ti
 };
 
 const TimeLine = () => {
-  // CORREÇÃO AQUI: Adicionei ": TimelineItemProps[]" para forçar a tipagem correta
+  
   const items: TimelineItemProps[] = [
     { year: '2014', title: 'Fundação', description: 'Início na Arco Consultoria na UFPE', position: '8%', direction: 'up', icon: Flag },
     { year: '2017', title: 'Federação', description: 'A Arco se torna Empresa Júnior federada', position: '20%', direction: 'down', icon: Users },
@@ -110,9 +110,7 @@ const TimeLine = () => {
         </p>
       </div>
 
-      {/* --- VIEW DESKTOP (Horizontal) --- 
-          Só aparece em telas grandes (lg = 1024px para cima)
-      */}
+      {/* VIEW DESKTOP (Horizontal) */}
       <div className="hidden lg:block w-full max-w-[1400px] mx-auto h-[500px] relative">
           {/* Linha Central */}
           <div className="absolute top-1/2 left-0 w-full h-1 bg-[#2A8080]/30 transform -translate-y-1/2 rounded-full"></div>
@@ -123,9 +121,7 @@ const TimeLine = () => {
           ))}
       </div>
 
-      {/* --- VIEW MOBILE (Vertical) --- 
-          Só aparece em telas menores (até lg)
-      */}
+      {/* VIEW MOBILE (Vertical) */}
       <div className="block lg:hidden max-w-md mx-auto pl-4">
           {items.map((item, index) => (
             <TimelineItemMobile 

@@ -1,13 +1,10 @@
 import TimeLine from "@/components/timeline/TimeLine";
-import Hero from "../components/home/Hero";
-import ServicesSection from "../components/sections/ServicesSection";
-import Header from "@/components/sections/Header"
-import CasesSection from "../components/sections/CasesSection";
-import Hero from "../components/home/Hero";
-import ServicesSection from "../components/sections/ServicesSection";
-import AboutUs from "../components/sections/AboutUs";
-import Header from "../components/sections/Header";
-import { InstaCarousel } from "../components/sections/InstaPosts";
+import Hero from "@/components/home/Hero";
+import ServicesSection from "@/components/sections/ServicesSection";
+import Header from "@/components/sections/Header";
+import CasesSection from "@/components/sections/CasesSection";
+import AboutUs from "@/components/sections/AboutUs";
+import { InstaCarousel } from "@/components/sections/InstaPosts";
 
 interface InstagramPost {
   id: string;
@@ -18,7 +15,10 @@ interface InstagramPost {
 
 async function getInstagramPosts(): Promise<InstagramPost[]> {
   try {
+    // Ajuste para garantir que não quebre no build se a variável não existir
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    
+    // verificação p/ evitar erro de fetch durante build estático se necessário
     const res = await fetch(`${baseUrl}/api/instagram`, {
       next: { revalidate: 3600 },
     });
@@ -42,10 +42,17 @@ export default async function Home() {
   return (
     <main>
       <Header />
+      
       <Hero />
+      
       <AboutUs />
+      
+      <TimeLine />
+      
       <ServicesSection />
+      
       <InstaCarousel posts={posts} />
+      
       <CasesSection />
     </main>
   );

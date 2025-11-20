@@ -50,7 +50,7 @@ const ServicesSection = () => {
         
         {/* Header Centralizado */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          {/* TAG PADRONIZADA (Versão Dark/Solid) */}
+          {/* TAG PADRONIZADA */}
           <span className="inline-block py-2 px-6 rounded-full bg-white text-[#2A8080] font-bold text-xs uppercase tracking-wider mb-6 shadow-sm">
             Nossos Serviços
           </span>
@@ -106,10 +106,12 @@ const ServicesSection = () => {
           ))}
         </div>
         
-        <div className="text-center mt-12">
-             <p className="text-white/80 text-sm cursor-pointer hover:text-white transition">
-                Não encontrou o que procura? <span className="underline decoration-white/50 underline-offset-4">Entre em contato conosco!</span>
-             </p>
+        {/* CTA Final - Inserido corretamente aqui */}
+        <div className="text-center mt-16">
+            <p className="text-sm text-white/90 mb-6 font-medium">Não encontrou o que procura? Clique em contato conosco</p>
+            <button className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all transform">
+              Entre em Contato
+            </button>
         </div>
 
       </div>
@@ -118,9 +120,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-        <p className="text-sm text-white/80 mb-6">Não encontrou o que procura? Clique em contato conosco</p>
-        <button className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">Entre em Contato</button>
-      </div>
-    </section>
-  )
-}
