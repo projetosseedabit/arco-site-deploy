@@ -1,83 +1,120 @@
-"use client"
+import React from "react";
+import { PenTool, HardHat, Ruler } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-import React from 'react'
-import { Palette, Building2, Hammer } from 'lucide-react'
-import ServiceCard from './ServiceCard'
-import type { Service } from './type'
-
-const services: Service[] = [
+const services = [
   {
     id: 1,
-    title: 'Design',
-    description:
-      'Soluções criativas e inovadoras em design gráfico, identidade visual, UX/UI e branding focadas em fortalecer marcas e gerar experiências memoráveis.',
-    items: ['Identidade Visual', 'Social Media', 'Materiais Promocionais'],
-    color: '#E585D8',
-    iconBg: '#E585D8',
-    icon: <Palette className="w-6 h-6" />,
-    detailedDescription: 'Descrição longa do serviço 1',
+    title: "Design",
+    description: "Soluções criativas e inovadoras em design gráfico, identidade visual, UX/UI e branding para empresas e projetos.",
+    items: ["Editoração", "Direção de Arte", "Identidade Visual"],
+    icon: PenTool,
+    iconColor: "bg-pink-400",
   },
   {
     id: 2,
-    title: 'Arquitetura',
-    description:
-      'Projetos arquitetônicos funcionais e esteticamente marcantes.',
-    items: ['Projeto Arquitetônico', 'Design de Interiores', 'Concepção Externa'],
-    color: '#FF9F5A',
-    iconBg: '#FF9F5A',
-    icon: <Building2 className="w-6 h-6" />,
-    detailedDescription: 'Descrição longa do serviço 2',
+    title: "Arquitetura",
+    description: "Projetos completos que unem estética e funcionalidade, transformando espaços em experiências únicas.",
+    items: ["Consultoria de Interiores", "Design de Interiores", "Projeto Arquitetônico", "Concepção Externa"],
+    icon: Ruler,
+    iconColor: "bg-orange-400",
   },
   {
     id: 3,
-    title: 'Engenharia',
-    description:
-      'Soluções técnicas e seguras em engenharia, garantindo qualidade, eficiência e sustentabilidade em cada etapa do projeto.',
-    items: ['Projeto Estrutural', 'Projeto Elétrico', 'Projeto Hidrossanitário'],
-    color: '#5B9FD8',
-    iconBg: '#5B9FD8',
-    icon: <Hammer className="w-6 h-6" />,
-    detailedDescription: 'Descrição longa do serviço 3',
+    title: "Engenharia",
+    description: "Excelência técnica e segurança para sua obra, com projetos estruturais e complementares de alta precisão.",
+    items: ["Projeto Elétrico", "Projeto Estrutural", "Projeto Hidrossanitário"],
+    icon: HardHat,
+    iconColor: "bg-blue-400",
   },
-]
+];
 
-export default function ServicesSection() {
+const ServicesSection = () => {
   return (
-    <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(180deg, #A0D8D8 0%, #6EC9C9 100%)' }}>
-      <div className="absolute left-0 top-20 opacity-20 pointer-events-none">
-        <svg width="120" height="200" viewBox="0 0 120 200" fill="none">
-          <path d="M0 0Q40 50 0 100" stroke="currentColor" strokeWidth="2" />
-          <path d="M20 0Q60 50 20 100" stroke="currentColor" strokeWidth="2" />
-        </svg>
+    <section id="servicos" className="py-24 bg-[#81D8D0] relative overflow-hidden">
+      
+      {/* Decoração de Fundo (Ondas Laterais) */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block pointer-events-none">
+         <div className="w-[400px] h-[400px] rounded-full border-[3px] border-[#9CE3DC] absolute -left-[250px] top-1/2 -translate-y-1/2 opacity-60"></div>
+         <div className="w-[500px] h-[500px] rounded-full border-[3px] border-[#9CE3DC] absolute -left-[300px] top-1/2 -translate-y-1/2 opacity-60"></div>
+         <div className="w-[600px] h-[600px] rounded-full border-[3px] border-[#9CE3DC] absolute -left-[350px] top-1/2 -translate-y-1/2 opacity-60"></div>
       </div>
-      <div className="absolute right-0 top-20 opacity-20 pointer-events-none">
-        <svg width="120" height="200" viewBox="0 0 120 200" fill="none">
-          <path d="M120 0Q80 50 120 100" stroke="currentColor" strokeWidth="2" />
-          <path d="M100 0Q60 50 100 100" stroke="currentColor" strokeWidth="2" />
-        </svg>
+      
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden md:block pointer-events-none">
+         <div className="w-[400px] h-[400px] rounded-full border-[3px] border-[#9CE3DC] absolute -right-[250px] top-1/2 -translate-y-1/2 opacity-60"></div>
+         <div className="w-[500px] h-[500px] rounded-full border-[3px] border-[#9CE3DC] absolute -right-[300px] top-1/2 -translate-y-1/2 opacity-60"></div>
+         <div className="w-[600px] h-[600px] rounded-full border-[3px] border-[#9CE3DC] absolute -right-[350px] top-1/2 -translate-y-1/2 opacity-60"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
-        <span className="inline-block text-[11px] px-3 py-1 rounded-full bg-white/30 text-white mb-3 font-semibold">NOSSOS SERVIÇOS</span>
-        <h2 className="text-4xl font-bold text-white mb-3">Serviços que Impactam</h2>
-        <p className="text-sm text-white/90 max-w-2xl mx-auto mb-12">Mais de uma década transformando ideias em realidade e formando profissionais de excelência</p>
-
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-3 mb-8">
-          {services.map((s) => (
-            <ServiceCard
-              key={s.id}
-              title={s.title}
-              description={s.description}
-              features={s.items}
-              color={s.color}
-              icon={s.icon}
-            />
-          ))}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Header Centralizado */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          {/* TAG PADRONIZADA (Versão Dark/Solid) */}
+          <span className="inline-block py-2 px-6 rounded-full bg-white text-[#2A8080] font-bold text-xs uppercase tracking-wider mb-6 shadow-sm">
+            Nossos Serviços
+          </span>
+          
+          {/* TÍTULO PADRONIZADO */}
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
+            Serviços que Impactam
+          </h2>
+          
+          <p className="text-white/90 text-lg md:text-xl max-w-xl mx-auto">
+            Soluções integradas para tirar seu projeto do papel com a qualidade técnica da UFPE.
+          </p>
         </div>
 
-        <p className="text-sm text-white/80 mb-6">Não encontrou o que procura? Clique em contato conosco</p>
-        <button className="inline-block text-white bg-gradient-to-r from-[#3DBEBE] to-[#A9C229] px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary/90 transition-colors">Entre em Contato</button>
+        {/* Grid de 3 Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {services.map((service) => (
+            <div 
+              key={service.id}
+              className="bg-white rounded-[2rem] p-8 shadow-xl flex flex-col items-center text-center relative group hover:-translate-y-2 transition-transform duration-300"
+            >
+              {/* Ícone Colorido */}
+              <div className={`${service.iconColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-md text-white`}>
+                <service.icon size={32} />
+              </div>
+
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                {service.title}
+              </h3>
+
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {service.description}
+              </p>
+
+              <ul className="text-left w-full space-y-2 mb-8 pl-4">
+                {service.items.map((item, idx) => (
+                  <li key={idx} className="flex items-center text-xs font-semibold text-gray-700">
+                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${service.title === 'Design' ? 'bg-pink-400' : service.title === 'Arquitetura' ? 'bg-orange-400' : 'bg-blue-400'}`}></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-auto w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full rounded-full border-gray-300 text-gray-600 hover:bg-gray-50 hover:text-custom-teal font-semibold"
+                >
+                  Saiba Mais
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-12">
+             <p className="text-white/80 text-sm cursor-pointer hover:text-white transition">
+                Não encontrou o que procura? <span className="underline decoration-white/50 underline-offset-4">Entre em contato conosco!</span>
+             </p>
+        </div>
+
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default ServicesSection;
