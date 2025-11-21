@@ -1,7 +1,7 @@
-import TimeLine from "@/components/timeline/TimeLine";
-import Hero from "@/components/home/Hero";
+import TimeLine from "@/components/sections/timeline";
+import Hero from "@/components/sections/home";
 import ServicesSection from "@/components/sections/ServicesSection";
-import Header from "@/components/sections/Header";
+import Header from "@/components/layout/Header";
 import CasesSection from "@/components/sections/CasesSection";
 import AboutUs from "@/components/sections/AboutUs";
 import { InstaCarousel } from "@/components/sections/InstaPosts";
