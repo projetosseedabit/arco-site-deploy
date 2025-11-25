@@ -13,6 +13,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
+      // Mantivemos sua lógica de 10px para resposta rápida
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
@@ -60,18 +61,18 @@ export default function Header() {
     }
   };
 
-  // LÓGICA NOVA: Transparente se estiver no topo E (for Home OU for Blog)
-  // Se rolar, fica branco. Se for outra página desconhecida, fica branco.
-  const isTransparentPage = pathname === "/" || pathname === "/blog";
+  // CORREÇÃO: Verifica se é Home OU se começa com /blog (para valer nos posts também)
+  const isTransparentPage = pathname === "/" || pathname.startsWith("/blog");
   
   const headerClass = isScrolled || menuOpen || !isTransparentPage
-    ? "bg-white text-gray-800 shadow-sm" // Adicionei shadow suave ao rolar
-    : "bg-transparent text-gray-800"; // Totalmente transparente no topo
+    ? "bg-white/90 backdrop-blur-md text-gray-800 shadow-md" // Adicionei backdrop-blur para ficar moderno
+    : "bg-transparent text-gray-800"; 
 
   return (
-    <header className={`w-full flex top-0 fixed z-50 transition-all duration-500 ease-in-out items-center justify-between px-8 md:px-20 py-4 ${headerClass}`}>
+    <header className={`w-full flex top-0 fixed z-50 transition-all duration-300 ease-in-out items-center justify-between px-8 md:px-20 py-4 ${headerClass}`}>
       <div className="logo z-50">
         <Link href="/#inicio" onClick={(e) => handleLinkClick(e, "inicio")}>
+            {/* Ajustei para width/height auto para não distorcer */}
             <Image src="/logoArco.svg" alt="Logo Arco" width={120} height={40} className="h-8 w-auto cursor-pointer" />
         </Link>
       </div>
