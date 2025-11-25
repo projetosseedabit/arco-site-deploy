@@ -2,33 +2,36 @@
 
 import React, { useState } from "react";
 import BlogCard from "./blogCard";
-import { Plus, X, Upload } from "lucide-react";
+import { Plus, X, Upload, LogOut } from "lucide-react";
 import { BlogPost } from "@/services/blogService";
 import { handlePostAction, handleDeleteAction } from "@/app/actions";
+import { logoutAction } from "@/app/auth-actions";
 
 interface BlogManagerProps {
   initialPosts: BlogPost[];
+  isLoggedIn: boolean;
 }
 
-export default function BlogManager({ initialPosts }: BlogManagerProps) {
+export default function BlogManager({ initialPosts, isLoggedIn }: BlogManagerProps) {
+  // ESTADOS
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<Partial<BlogPost> | null>(null);
 
-  // Fecha form e limpa estado após salvar
+  // FUNÇÃO 1: LIDAR COM O SUBMIT DO FORMULÁRIO
   const handleSubmit = async (formData: FormData) => {
     await handlePostAction(formData);
     setIsFormOpen(false);
     setEditingPost(null);
   };
 
-  // Função chamada pelo botão de editar do Card
+  // FUNÇÃO 2: INICIAR EDIÇÃO (Passada para o Card)
   const startEditing = (post: Partial<BlogPost>) => {
     setEditingPost(post);
     setIsFormOpen(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // Função chamada pelo botão de deletar do Card
+  // FUNÇÃO 3: DELETAR POST (Passada para o Card)
   const deletePost = async (id: number) => {
     if (confirm("Tem certeza que deseja excluir este post?")) {
         await handleDeleteAction(id);
@@ -40,32 +43,43 @@ export default function BlogManager({ initialPosts }: BlogManagerProps) {
       
       {/* Cabeçalho */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-4">
-        {/* Correção do Título Cortado: Adicionado pb-2 e leading-normal */}
         <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent pb-2 leading-tight">
           Blog da Arco
         </h1>
         
-        <button 
-          onClick={() => {
-            setIsFormOpen(!isFormOpen);
-            setEditingPost(null); // Limpa edição se fechar/abrir
-          }}
-          className="flex items-center gap-2 bg-[#2A8080] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#1e6060] transition-colors shadow-lg text-sm"
-        >
-          {isFormOpen ? <X size={18}/> : <Plus size={18}/>}
-          {isFormOpen ? "Cancelar" : "Novo Post"}
-        </button>
+        {/* BOTÕES DE CONTROLE (Só aparecem se o damin estiver logado) */}
+        {isLoggedIn && (
+          <div className="flex gap-2">
+            <button 
+              onClick={() => {
+                setIsFormOpen(!isFormOpen);
+                setEditingPost(null); 
+              }}
+              className="flex items-center gap-2 bg-[#2A8080] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#1e6060] transition-colors shadow-lg text-sm"
+            >
+              {isFormOpen ? <X size={18}/> : <Plus size={18}/>}
+              {isFormOpen ? "Cancelar" : "Novo Post"}
+            </button>
+            
+            <button 
+                onClick={() => logoutAction().then(() => window.location.reload())}
+                className="p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition-colors"
+                title="Sair do Admin"
+            >
+                <LogOut size={20} />
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Formulário (Criação e Edição) */}
-      {isFormOpen && (
+      {/* FORMULÁRIO DE CRIAÇÃO/EDIÇÃO */}
+      {isLoggedIn && isFormOpen && (
         <div className="bg-white p-6 rounded-xl shadow-xl mb-12 animate-in fade-in slide-in-from-top-4 border border-[#2A8080]/20">
             <h3 className="text-xl font-bold text-gray-800 mb-4">
                 {editingPost ? "Editar Post" : "Escrever novo artigo"}
             </h3>
             
             <form action={handleSubmit} className="space-y-4">
-                {/* Campo oculto para ID se for edição */}
                 {editingPost && <input type="hidden" name="id" value={editingPost.id} />}
                 
                 <div>
@@ -105,7 +119,8 @@ export default function BlogManager({ initialPosts }: BlogManagerProps) {
                         name="content"
                         required
                         rows={6}
-                        defaultValue={editingPost?.content?.replace(/<[^>]*>?/gm, '') || ""} // Remove tags HTML básicas pra editar texto puro
+                        
+                        defaultValue={editingPost?.content?.replace(/<[^>]*>?/gm, '') || ""} 
                         className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#2A8080] outline-none"
                         placeholder="Escreva aqui..."
                     />
@@ -117,7 +132,7 @@ export default function BlogManager({ initialPosts }: BlogManagerProps) {
         </div>
       )}
 
-      {/* Lista */}
+      {/* LISTA DE POSTS */}
       <div className="flex flex-col gap-6">
         {initialPosts.map((post) => (
           <BlogCard 
@@ -128,6 +143,9 @@ export default function BlogManager({ initialPosts }: BlogManagerProps) {
             excerpt={post.excerpt}
             content={post.content}
             imageUrl={post.imageUrl}
+            
+            //funções e o estado de login
+            showActions={isLoggedIn}
             onDelete={deletePost}
             onEdit={startEditing}
           />

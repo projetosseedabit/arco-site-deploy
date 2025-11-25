@@ -42,17 +42,11 @@ export default async function Home() {
   return (
     <main>
       <Header />
-      
       <Hero />
-      
       <AboutUs />
-      
       <TimeLine />
-      
       <ServicesSection />
-      
       <InstaCarousel posts={posts} />
-      
       <CasesSection />
     </main>
   );

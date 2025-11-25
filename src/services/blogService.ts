@@ -10,12 +10,12 @@ export interface BlogPost {
   date: string;
   author: string;
   category: string;
-  imageUrl?: string; // Novo campo para imagem
+  imageUrl?: string;
 }
 
-const dbPath = path.join(process.cwd(), 'src', 'data', 'posts.json');
+const dbPath = path.join(process.cwd(), 'data', 'posts.json');
 
-// Helper para garantir que o diretório de uploads existe (para não dar erro ao salvar imagem)
+//Garante pasta de uploads
 async function ensureUploadsDir() {
   const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
   try {
@@ -27,51 +27,62 @@ async function ensureUploadsDir() {
 
 export async function getAllPosts(): Promise<BlogPost[]> {
   try {
+
+    //debug
+    console.log("📂 Tentando ler arquivo em:", dbPath);
+
     const data = await fs.readFile(dbPath, 'utf-8');
-    return JSON.parse(data);
+    
+    console.log("✅ Arquivo lido com sucesso. Tamanho:", data.length);
+    
+    const parsedData = JSON.parse(data);
+    return parsedData;
+
   } catch (error) {
+    console.error("❌ ERRO GRAVE ao ler posts.json:", error);
     return [];
   }
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  // Decodifica o slug caso venha com caracteres especiais da URL
+  const decodedSlug = decodeURIComponent(slug);
   const posts = await getAllPosts();
-  return posts.find((post) => post.slug === slug);
+  const found = posts.find((post) => post.slug === decodedSlug);
+  if (!found) {
+    console.log(`⚠️ Post não encontrado. Procurado: "${decodedSlug}". Disponíveis:`, posts.map(p => p.slug));
+  }
+  
+  return found;
 }
 
-// Criar ou Atualizar
 export async function savePost(post: BlogPost): Promise<void> {
   const posts = await getAllPosts();
   const index = posts.findIndex((p) => p.id === post.id);
 
   if (index >= 0) {
-    // Atualizar existente
     posts[index] = post;
   } else {
-    // Criar novo (no topo da lista)
     posts.unshift(post);
   }
   
   await fs.writeFile(dbPath, JSON.stringify(posts, null, 2));
 }
 
-// Deletar
 export async function deletePost(id: number): Promise<void> {
   const posts = await getAllPosts();
   const filteredPosts = posts.filter((p) => p.id !== id);
   await fs.writeFile(dbPath, JSON.stringify(filteredPosts, null, 2));
 }
 
-// Função auxiliar para salvar imagem no disco local
 export async function saveImage(file: File): Promise<string> {
   await ensureUploadsDir();
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
   
-  // Cria um nome único para não sobrescrever
   const fileName = `${Date.now()}-${file.name.replace(/\s/g, '-')}`;
   const filePath = path.join(process.cwd(), 'public', 'uploads', fileName);
   
   await fs.writeFile(filePath, buffer);
-  return `/uploads/${fileName}`; // Retorna o caminho para usar no <img src>
+  return `/uploads/${fileName}`;
 }
