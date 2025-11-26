@@ -63,3 +63,88 @@
     background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
   }
 }
+
+html,
+body {
+  overflow-x: hidden; 
+  max-width: 100vw;
+}
+
+.prose {
+    color: #4b5563; 
+    font-size: 1.125rem; 
+    line-height: 1.8;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4 {
+    color: #1f2937; 
+    font-weight: 800;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.875rem; border-bottom: 2px solid #f3f4f6; padding-bottom: 0.5rem; }
+.prose h3 { font-size: 1.5rem; }
+
+.prose p {
+    margin-bottom: 1.5rem;
+}
+
+.prose a {
+    color: #2A8080; 
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s;
+}
+
+.prose a:hover {
+    color: #3DBEBE; 
+}
+
+.prose ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.prose ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.prose li {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+
+.prose blockquote {
+    border-left: 4px solid #3DBEBE; 
+    background-color: #F0FDFA; 
+    padding: 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #2A8080;
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+
+.prose img {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.prose strong {
+    font-weight: 700;
+    color: #111827; 
+}

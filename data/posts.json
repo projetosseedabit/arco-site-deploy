@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1764111304506,
+    "slug": "teste-1",
+    "title": "Teste 1",
+    "excerpt": "Teste 1\r\n...",
+    "content": "<p>Teste 1\r<br/></p>",
+    "date": "25/11/2025",
+    "author": "Admin",
+    "category": "Geral",
+    "imageUrl": ""
+  },
+  {
+    "id": 1,
+    "slug": "post-de-exemplo",
+    "title": "Post de Exemplo",
+    "excerpt": "Conteúdo de teste persistente....",
+    "content": "Conteúdo de teste persistente.",
+    "date": "25/11/2025",
+    "author": "Admin",
+    "category": "Geral",
+    "imageUrl": ""
+  }
+]
