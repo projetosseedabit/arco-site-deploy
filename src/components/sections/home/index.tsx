@@ -17,8 +17,8 @@ const Hero = () => {
             </div>
 
             <h1 className="text-hero-title font-bold leading-tight text-custom-gray">
-              Prazer, somos a <br />
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              <span className="whitespace-nowrap">Prazer, somos a</span> <br />
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent whitespace-nowrap">
                 Arco Consultoria
               </span>
             </h1>
