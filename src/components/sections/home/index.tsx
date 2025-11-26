@@ -42,7 +42,7 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative min-h-[90vh] flex items-start overflow-hidden bg-hero-pattern bg-cover bg-center pt-20"
+      className="relative min-h-[90vh] flex justify-center items-start overflow-hidden bg-hero-pattern bg-cover bg-center pt-20 px-8 md:px-20"
     >
       
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-60% to-white z-0 pointer-events-none"></div>
@@ -65,15 +65,15 @@ const Hero = () => {
           className="hidden md:block absolute top-1/2 right-0 z-0 w-48 h-48 opacity-30 animate-float-right pointer-events-none rotate-180"
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-screen-xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 space mt-20">
             <div className="inline-block">
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-custom-gray">
-              Prazer, somos a <br />
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            <h1 className="text-hero-title font-bold leading-tight text-custom-gray">
+              <span className="whitespace-nowrap">Prazer, somos a</span> <br />
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent whitespace-nowrap">
                 Arco Consultoria
               </span>
             </h1>

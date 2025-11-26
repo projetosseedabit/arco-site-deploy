@@ -49,20 +49,18 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Centralizado */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          {/* TAG PADRONIZADA */}
-          <span className="inline-block py-2 px-6 rounded-full bg-white text-[#2A8080] font-bold text-xs uppercase tracking-wider mb-6 shadow-sm">
-            Nossos Serviços
-          </span>
-          
-          {/* TÍTULO PADRONIZADO */}
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Serviços que Impactam
-          </h2>
-          
-          <p className="text-white/90 text-lg md:text-xl max-w-xl mx-auto">
-            Soluções integradas para tirar seu projeto do papel com a qualidade técnica da UFPE.
-          </p>
+        <div className="text-center max-w-3xl mx-auto mb-20">
+            <div className="inline-block">
+                <span className="px-4 py-2 rounded-full bg-white text-primary font-semibold text-sm border border-primary/20">
+                    NOSSOS SERVIÇOS
+                </span>
+            </div>
+            <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-white">
+                Serviços que Impactam
+            </h2>
+            <p className="mt-4 text-lg sm:text-xl text-white/90 max-w-3xl mx-auto">
+                Soluções integradas para tirar seu projeto do papel com a qualidade técnica da UFPE.
+            </p>
         </div>
 
         {/* Grid de 3 Cards */}

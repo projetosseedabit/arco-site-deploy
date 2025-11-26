@@ -98,20 +98,22 @@ const TimeLine = () => {
     <div className="relative w-full bg-gradient-to-b from-white via-[#E0F7F5] to-[#81D8D0] text-gray-800 py-24 px-4 sm:px-8 overflow-hidden">
       
       {/* --- Título e Cabeçalho --- */}
-      <div className="text-center relative z-10 max-w-4xl mx-auto mb-16 md:mb-32">
-        <span className="inline-block py-2 px-6 rounded-full bg-[#3DBEBE]/10 text-[#2A8080] font-bold text-xs uppercase tracking-wider mb-6 border border-[#3DBEBE]/20">
-          Nossa Trajetória
-        </span>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-          Uma Jornada de Transformação
-        </h2>
-        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-          Mais de uma década transformando ideias em realidade e formando profissionais de excelência
-        </p>
+      <div className="text-center">
+          <div className="inline-block">
+              <span className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm border border-primary/20">
+                  NOSSA TRAJETÓRIA
+              </span>
+          </div>
+          <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-custom-gray">
+              Uma Jornada de Transformação
+          </h2>
+          <p className="mt-4 text-lg sm:text-xl text-custom-light-gray max-w-3xl mx-auto">
+              Mais de uma década transformando ideias em realidade e formando profissionais de excelência
+          </p>
       </div>
 
       {/* VIEW DESKTOP (Horizontal) */}
-      <div className="hidden lg:block w-full max-w-[1400px] mx-auto h-[500px] relative">
+      <div className="hidden lg:block w-full max-w-[1400px] mx-auto h-[500px] relative mt-20">
           {/* Linha Central */}
           <div className="absolute top-1/2 left-0 w-full h-1 bg-[#2A8080]/30 transform -translate-y-1/2 rounded-full"></div>
           <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-[#2A8080] to-[#3DBEBE] transform -translate-y-1/2 rounded-full origin-left"></div>
@@ -122,7 +124,7 @@ const TimeLine = () => {
       </div>
 
       {/* VIEW MOBILE (Vertical) */}
-      <div className="block lg:hidden max-w-md mx-auto pl-4">
+      <div className="block lg:hidden max-w-md mx-auto pl-4 mt-20">
           {items.map((item, index) => (
             <TimelineItemMobile 
               key={index} 
