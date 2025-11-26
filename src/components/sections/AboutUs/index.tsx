@@ -60,9 +60,9 @@ const AboutUs = () => {
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            {/* Título centralizado */}
+                            {}
                             <CardTitle className="mb-2 text-2xl font-bold text-custom-gray text-center">{item.title}</CardTitle>
-                            {/* CORREÇÃO: Corpo do texto centralizado (text-center) ao invés de alinhado à esquerda */}
+                            {}
                             <p className="text-custom-light-gray text-center leading-relaxed">{item.description}</p>
                         </CardContent>
                     </Card>

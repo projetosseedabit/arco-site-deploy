@@ -64,6 +64,12 @@
   }
 }
 
+@layer utilities {
+  .text-hero-title {
+    font-size: clamp(2.25rem, 5vw + 1rem, 4.5rem);
+  }
+}
+
 html,
 body {
   overflow-x: hidden; 
