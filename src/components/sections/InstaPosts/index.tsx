@@ -22,7 +22,7 @@ export function InstaCarousel({ posts }: InstaCarouselProps) {
   return (
     <section className="w-full py-12 flex justify-center">
       <div className="w-full max-w-5xl px-4 flex flex-col items-center">
-        <h2 className="text-2xl font-bold mb-8 text-center w-full">Posts</h2>
+        <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-gray-800 leading-tight">Posts</h2>
         <Swiper
           modules={[Navigation, Pagination]}
           spaceBetween={20}
