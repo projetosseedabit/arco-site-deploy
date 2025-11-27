@@ -6,6 +6,8 @@ import CasesSection from "@/components/sections/CasesSection";
 import AboutUs from "@/components/sections/AboutUs";
 import { InstaCarousel } from "@/components/sections/InstaPosts";
 import FeedbackSection from "@/components/sections/FeedbackSection";
+import ContactSection from "@/components/sections/ContactSection";
+import Footer from "@/components/layout/Footer";
 
 interface InstagramPost {
   id: string;
@@ -49,8 +51,9 @@ export default async function Home() {
       <ServicesSection />
       <InstaCarousel posts={posts} />
       <CasesSection />
-
       <FeedbackSection />
+      <ContactSection />
+      <Footer />
     </main>
   );
 }
