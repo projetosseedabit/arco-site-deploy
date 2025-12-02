@@ -1,6 +1,7 @@
 import React from "react";
 import { PenTool, HardHat, Ruler } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const services = [
   {
@@ -107,9 +108,11 @@ const ServicesSection = () => {
         {/* CTA Final - Inserido corretamente aqui */}
         <div className="text-center mt-16">
             <p className="text-sm text-white/90 mb-6 font-medium">Não encontrou o que procura? Clique em contato conosco</p>
-            <button className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all transform">
+            <Link
+              href="#contato"
+              className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all transform">
               Entre em Contato
-            </button>
+            </Link>
         </div>
 
       </div>

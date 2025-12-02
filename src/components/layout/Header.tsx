@@ -13,7 +13,6 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Mantivemos sua lógica de 10px para resposta rápida
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
@@ -61,7 +60,6 @@ export default function Header() {
     }
   };
 
-  // CORREÇÃO: Verifica se é Home OU se começa com /blog (para valer nos posts também)
   const isTransparentPage = pathname === "/" || pathname.startsWith("/blog");
   
   const headerClass = isScrolled || menuOpen || !isTransparentPage

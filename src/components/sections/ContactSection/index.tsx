@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const ContactSection = () => {
   const [isLoading, setIsLoading] = useState(false);
