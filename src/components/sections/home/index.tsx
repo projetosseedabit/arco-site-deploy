@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Image from "next/image"; // Importante
 import Link from "next/link"; // Import Link
 

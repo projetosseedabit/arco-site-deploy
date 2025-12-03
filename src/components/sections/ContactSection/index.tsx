@@ -13,7 +13,7 @@ const ContactSection = () => {
     setIsLoading(true);
     await new Promise((resolve) => setTimeout(resolve, 2000));
     setIsLoading(false);
-    toast.sucess("Mensagem enviada com sucesso!");
+    toast.success("Mensagem enviada com sucesso!");
   };
 
   return (
