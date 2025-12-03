@@ -2,43 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 import Image from "next/image"; // Importante
+import Link from "next/link"; // Import Link
 
 const Hero = () => {
-  const router = useRouter();
-
-  const smoothScrollTo = (targetId: string) => {
-    const target = document.getElementById(targetId);
-    if (target) {
-      const headerOffset = 85;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1500;
-      let startTime: number | null = null;
-
-      const ease = (t: number, b: number, c: number, d: number) => {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-      };
-
-      const animation = (currentTime: number) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-
-      requestAnimationFrame(animation);
-    } else {
-      router.push(`/#${targetId}`);
-    }
-  };
-
   return (
     <section
       id="inicio"
@@ -83,24 +50,27 @@ const Hero = () => {
               oferece consultoria de excelência em Design, Engenharia e Arquitetura, 
               unindo conhecimento acadêmico e prática de mercado.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 variant="hero" 
                 size="lg" 
                 className="rounded-full z-20"
-                onClick={() => smoothScrollTo("servicos")}
+                asChild
               >
-                Conheça nossos serviços
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="#servicos" className="flex items-center">
+                  Conheça nossos serviços
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="rounded-full border-custom-teal text-custom-teal hover:bg-custom-teal hover:text-white z-20"
-                onClick={() => smoothScrollTo("sobre-nos")}
+                asChild
               >
-                Saiba mais sobre nós
+                <Link href="#sobre-nos">
+                  Saiba mais sobre nós
+                </Link>
               </Button>
             </div>
           </div>

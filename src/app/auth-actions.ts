@@ -6,8 +6,16 @@ export async function loginAction(formData: FormData) {
   const user = formData.get('username');
   const pass = formData.get('password');
 
+  const validUser = process.env.ADMIN_USER;
+  const validPass = process.env.ADMIN_PASSWORD;
+
+  if (!validUser || !validPass) {
+    console.error("ERRO: Variáveis de ambiente de ADMIN não configuradas.");
+    return { success: false, message: 'Erro interno de configuração.' };
+  }
+
   // CREDENCIAIS DO ADM
-  if (user === 'admin' && pass === 'arco123') {
+  if (user === validUser && pass === validPass) {
     // Define um cookie que dura 1 dia
     const cookieStore = await cookies();
     cookieStore.set('arco_admin_token', 'autenticado-com-sucesso', {
