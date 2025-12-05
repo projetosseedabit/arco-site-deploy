@@ -10,7 +10,7 @@ const feedbackData = [
     comment: "O trabalho de identidade visual superou todas as expectativas. A equipe captou perfeitamente a essência do nosso restaurante e traduziu em um design incrível.",
     author: "Maria Carmen",
     role: "Proprietária - Restaurante Carmen",
-    avatar: "/images/avatar1.jpg", // Substitua pelo caminho real da imagem
+    avatar: "/images/avatar1.jpg", 
   },
   {
     stars: 5,
@@ -46,6 +46,7 @@ type FeedbackCardProps = {
 
 const FeedbackCard = ({ stars, comment, author, role, avatar, isActive }: FeedbackCardProps) => (
   <div className={`transition-all duration-500 ${isActive ? 'translate-y-4' : 'blur-sm scale-95 opacity-70'}`}>
+    {/* O card continua branco, mas com sombra e borda para destacar do fundo branco da seção */}
     <div className="bg-white rounded-2xl p-8 shadow-lg relative w-full max-w-lg mx-auto border border-gray-100">
       <Quote className="absolute top-4 right-6 w-12 h-12 text-orange-100" />
       <div className="flex mb-4">
@@ -79,7 +80,7 @@ export default function FeedbackSection() {
     // Autoplay
     const autoplay = setInterval(() => {
         emblaApi.scrollNext();
-    }, 5000); // Passa a cada 5 segundos
+    }, 5000); 
 
     return () => {
         clearInterval(autoplay);
@@ -88,7 +89,7 @@ export default function FeedbackSection() {
   }, [emblaApi]);
 
   return (
-    <section id="feedback" className="bg-gray-50 py-24 sm:py-32 overflow-hidden">
+    <section id="feedback" className=" bg-gray-50 py-24 sm:py-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho Padronizado */}
         <div className="text-center max-w-3xl mx-auto mb-16">

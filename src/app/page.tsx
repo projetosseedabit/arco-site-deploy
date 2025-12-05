@@ -49,9 +49,9 @@ export default async function Home() {
       <AboutUs />
       <TimeLine />
       <ServicesSection />
-      <InstaCarousel posts={posts} />
       <CasesSection />
       <FeedbackSection />
+       <InstaCarousel posts={posts} />
       <ContactSection />
       <Footer />
     </main>

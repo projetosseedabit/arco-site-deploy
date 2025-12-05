@@ -3,13 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation"; // Removido useRouter
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
+  // Removido const router = useRouter(); pois não era usado
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,30 +25,13 @@ export default function Header() {
     const target = document.getElementById(targetId);
     if (target) {
       const headerOffset = 85;
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      const duration = 1500;
-      let startTime: number | null = null;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
-      const ease = (t: number, b: number, c: number, d: number) => {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-      };
-
-      const animation = (currentTime: number) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      };
-
-      requestAnimationFrame(animation);
-    } else {
-      router.push(`/#${targetId}`);
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
@@ -57,13 +40,14 @@ export default function Header() {
     if (pathname === "/") {
       e.preventDefault();
       smoothScrollTo(targetId);
+      window.history.pushState(null, "", `/#${targetId}`);
     }
   };
 
   const isTransparentPage = pathname === "/" || pathname.startsWith("/blog");
   
   const headerClass = isScrolled || menuOpen || !isTransparentPage
-    ? "bg-white/90 backdrop-blur-md text-gray-800 shadow-md" // Adicionei backdrop-blur para ficar moderno
+    ? "bg-white/90 backdrop-blur-md text-gray-800 shadow-md"
     : "bg-transparent text-gray-800"; 
 
   return (
@@ -71,7 +55,6 @@ export default function Header() {
       <div className="w-full max-w-screen-xl flex items-center justify-between">
         <div className="logo z-50">
           <Link href="/#inicio" onClick={(e) => handleLinkClick(e, "inicio")}>
-              {/* Ajustei para width/height auto para não distorcer */}
               <Image src="/logoArco.svg" alt="Logo Arco" width={120} height={40} className="h-8 w-auto cursor-pointer" />
           </Link>
         </div>
@@ -81,7 +64,7 @@ export default function Header() {
             <li><Link href="/#inicio" className="hover:text-[#1d7a7a] transition-colors" onClick={(e) => handleLinkClick(e, "inicio")}>Início</Link></li>
             <li><Link href="/#sobre-nos" className="hover:text-[#1d7a7a] transition-colors" onClick={(e) => handleLinkClick(e, "sobre-nos")}>Sobre nós</Link></li>
             <li><Link href="/#servicos" className="hover:text-[#1d7a7a] transition-colors" onClick={(e) => handleLinkClick(e, "servicos")}>Serviços</Link></li>
-            <li><Link href="/#portfolio" className="hover:text-[#1d7a7a] transition-colors" onClick={(e) => handleLinkClick(e, "portfolio")}>Portfólio</Link></li>
+            <li><Link href="/#portfolio" className="hover:text-[#1d7a7a] transition-colors" onClick={(e) => handleLinkClick(e, "cases")}>Portfólio</Link></li>
             <li><Link href="/blog" className="hover:text-[#1d7a7a] transition-colors" onClick={() => setMenuOpen(false)}>Blog</Link></li>
           </ul>
 

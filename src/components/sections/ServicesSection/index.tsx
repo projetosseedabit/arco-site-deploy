@@ -1,6 +1,6 @@
 import React from "react";
 import { PenTool, HardHat, Ruler } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// Import do Button removido
 import Link from "next/link";
 
 const services = [
@@ -32,7 +32,7 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="servicos" className="py-24 bg-[#81D8D0] relative overflow-hidden">
+    <section id="servicos" className="py-24 bg-gradient-to-b from-[#81D8D0] via-[#81D8D0] to-gray-50 relative overflow-hidden">
       
       {/* Decoração de Fundo (Ondas Laterais) */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block pointer-events-none">
@@ -51,11 +51,6 @@ const ServicesSection = () => {
         
         {/* Header Centralizado */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-block">
-                <span className="px-4 py-2 rounded-full bg-white text-primary font-semibold text-sm border border-primary/20">
-                    NOSSOS SERVIÇOS
-                </span>
-            </div>
             <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-white">
                 Serviços que Impactam
             </h2>
@@ -71,7 +66,6 @@ const ServicesSection = () => {
               key={service.id}
               className="bg-white rounded-[2rem] p-8 shadow-xl flex flex-col items-center text-center relative group hover:-translate-y-2 transition-transform duration-300"
             >
-              {/* Ícone Colorido */}
               <div className={`${service.iconColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-md text-white`}>
                 <service.icon size={32} />
               </div>
@@ -92,22 +86,14 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-auto w-full">
-                <Button 
-                  variant="outline" 
-                  className="w-full rounded-full border-gray-300 text-gray-600 hover:bg-gray-50 hover:text-custom-teal font-semibold"
-                >
-                  Saiba Mais
-                </Button>
-              </div>
+              
             </div>
           ))}
         </div>
         
-        {/* CTA Final - Inserido corretamente aqui */}
+        {/* CTA Final */}
         <div className="text-center mt-16">
-            <p className="text-sm text-white/90 mb-6 font-medium">Não encontrou o que procura? Clique em contato conosco</p>
+            <p className="text-sm text-gray-500 mb-6 font-medium">Não encontrou o que procura? Clique em contato conosco</p>
             <Link
               href="#contato"
               className="inline-block text-white bg-gradient-to-r from-primary via-primary to-secondary px-8 py-3 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all transform">

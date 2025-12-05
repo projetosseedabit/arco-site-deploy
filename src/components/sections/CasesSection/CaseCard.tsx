@@ -9,7 +9,7 @@ interface CaseCardProps {
 export default function CaseCard({ case: caseItem }: CaseCardProps) {
   return (
     <div 
-      className="bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+      className="bg-gray-50 rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
       <div className="relative h-48 w-full">
         <Image
           src={caseItem.image}

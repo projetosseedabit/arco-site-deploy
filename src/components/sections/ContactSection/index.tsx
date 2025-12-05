@@ -32,7 +32,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contato" className="py-24 bg-white relative overflow-hidden">
+    // ALTERAÇÃO AQUI: Mudado de 'bg-white' para 'bg-gray-50' para igualar à seção de Feedback
+    <section id="contato" className="py-24 bg-gray-50 relative overflow-hidden">
+      
+      {/* Mantivemos os efeitos de luz (blobs) pois ficam sutis e bonitos sobre o cinza */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full -z-10 pointer-events-none">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-64 h-64 bg-[#3DBEBE]/10 rounded-full blur-3xl"></div>
@@ -55,6 +58,7 @@ const ContactSection = () => {
           </p>
         </div>
 
+        {/* O Card do formulário é branco (bg-white), então agora ele se destaca do fundo cinza */}
         <div className="w-full max-w-2xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-gray-100 relative">
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
