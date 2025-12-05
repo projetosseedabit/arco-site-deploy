@@ -3,7 +3,8 @@ import Header from "@/components/layout/Header";
 import { getAllPosts, getPostBySlug } from "@/services/blogService";
 import { Calendar, User, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image"; 
+import Image from "next/image";
+import DOMPurify from "isomorphic-dompurify";
 
 interface BlogPostProps {
   params: Promise<{
@@ -36,6 +37,8 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
   if (!post) {
     notFound();
   }
+
+  const sanitizedContent = DOMPurify.sanitize(post.content);
 
   return (
     <>
@@ -95,7 +98,7 @@ export default async function BlogPostPage({ params }: BlogPostProps) {
                 
                 <div 
                   className="prose prose-lg prose-teal mx-auto"
-                  dangerouslySetInnerHTML={{ __html: post.content }} 
+                  dangerouslySetInnerHTML={{ __html: sanitizedContent }} 
                 />
             </div>
         </div>

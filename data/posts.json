@@ -4,11 +4,11 @@
     "slug": "teste-1",
     "title": "Teste 1",
     "excerpt": "Teste 1\r\n...",
-    "content": "<p>Teste 1\r<br/></p>",
+    "content": "Teste 1\r\n",
     "date": "25/11/2025",
     "author": "Admin",
     "category": "Geral",
-    "imageUrl": ""
+    "imageUrl": "/uploads/1764905984018-IMG_4912.JPG"
   },
   {
     "id": 1,

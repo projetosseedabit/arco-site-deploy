@@ -13,17 +13,27 @@ export default function LoginModal({ onClose }: LoginModalProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsLoading(true);
     setError("");
     
-    const res = await loginAction(formData);
+    const formData = new FormData(e.currentTarget);
     
-    if (res.success) {
-      window.location.reload(); 
-    } else {
-      setError(res.message || "Credenciais inválidas");
+    try {
+      const res = await loginAction(formData);
+      
+      if (res.success) {
+        // Reload depois de fazer login
+        window.location.reload(); 
+      } else {
+        setError(res.message || "Credenciais inválidas");
+        setIsLoading(false);
+      }
+    } catch (err) {
+      setError("Erro ao fazer login. Tente novamente.");
       setIsLoading(false);
+      console.error(err);
     }
   };
 
@@ -53,70 +63,75 @@ export default function LoginModal({ onClose }: LoginModalProps) {
 
         {/* Formulário */}
         <div className="p-8">
-            <form action={handleSubmit} className="space-y-5">
-              
-              {/* Campo Usuário */}
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Usuário</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                    <User size={18} />
-                  </div>
-                  <input 
-                    name="username" 
-                    type="text" 
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-[#2A8080] focus:ring-2 focus:ring-[#2A8080]/20 transition-all text-gray-700 placeholder-gray-400" 
-                    placeholder="Digite seu usuário" 
-                    required 
-                  />
+          <form onSubmit={handleSubmit} className="space-y-5">
+            
+            {/* Campo Usuário */}
+            <div>
+              <label htmlFor="username" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Usuário</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <User size={18} />
                 </div>
+                <input 
+                  id="username"
+                  name="username" 
+                  type="text" 
+                  className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg outline-none focus:border-[#2A8080] focus:ring-2 focus:ring-[#2A8080]/20 transition-all text-gray-700 placeholder-gray-400" 
+                  placeholder="Digite seu usuário" 
+                  required 
+                  disabled={isLoading}
+                />
               </div>
+            </div>
 
-              {/* Campo Senha com Toggle */}
-              <div>
-                <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Senha</label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                    <Lock size={18} />
-                  </div>
-                  <input 
-                    name="password" 
-                    type={showPassword ? "text" : "password"} 
-                    className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-lg outline-none focus:border-[#2A8080] focus:ring-2 focus:ring-[#2A8080]/20 transition-all text-gray-700 placeholder-gray-400" 
-                    placeholder="••••••••" 
-                    required 
-                  />
-                  {/* Botão Olhinho */}
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#2A8080] transition-colors"
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
+            {/* Campo Senha com Toggle */}
+            <div>
+              <label htmlFor="password" className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Senha</label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                  <Lock size={18} />
                 </div>
+                <input 
+                  id="password"
+                  name="password" 
+                  type={showPassword ? "text" : "password"} 
+                  className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-lg outline-none focus:border-[#2A8080] focus:ring-2 focus:ring-[#2A8080]/20 transition-all text-gray-700 placeholder-gray-400" 
+                  placeholder="••••••••" 
+                  required 
+                  disabled={isLoading}
+                />
+                {/* Botão Olhinho */}
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-[#2A8080] transition-colors"
+                  disabled={isLoading}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
               </div>
-              
-              {/* Mensagem de Erro */}
-              {error && (
-                <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg text-center font-medium border border-red-100">
-                  {error}
-                </div>
+            </div>
+            
+            {/* Mensagem de Erro */}
+            {error && (
+              <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg text-center font-medium border border-red-100">
+                {error}
+              </div>
+            )}
+
+            {/* Botão Submit */}
+            <button 
+              type="submit" 
+              disabled={isLoading}
+              className="w-full bg-[#2A8080] text-white py-3 rounded-lg font-bold hover:bg-[#1e6060] active:scale-[0.98] transition-all shadow-lg shadow-[#2A8080]/20 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+            >
+              {isLoading ? (
+                <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+              ) : (
+                "Entrar no Sistema"
               )}
-
-              {/* Botão Submit */}
-              <button 
-                type="submit" 
-                disabled={isLoading}
-                className="w-full bg-[#2A8080] text-white py-3 rounded-lg font-bold hover:bg-[#1e6060] active:scale-[0.98] transition-all shadow-lg shadow-[#2A8080]/20 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
-              >
-                {isLoading ? (
-                  <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
-                ) : (
-                  "Entrar no Sistema"
-                )}
-              </button>
-            </form>
+            </button>
+          </form>
         </div>
       </div>
     </div>

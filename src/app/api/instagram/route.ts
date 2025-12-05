@@ -8,6 +8,8 @@ interface InstagramPost {
   media_url: string;
   caption?: string;
   permalink: string;
+  media_link?: string;
+  thumbnail_url?: string;
 }
 
 async function getInstagramPosts(): Promise<InstagramPost[]> {
@@ -17,19 +19,21 @@ async function getInstagramPosts(): Promise<InstagramPost[]> {
         }
 
         const fields = "id,caption,media_url,permalink,media_type,thumbnail_url";
-        const url = `https://graph.instagram.com/${USER_ID}/media?fields=${fields}&access_token=${ACCESS_TOKEN}`;
+        const url = `https://graph.facebook.com/v21.0/${USER_ID}/media?fields=${fields}&access_token=${ACCESS_TOKEN}`;
 
         const res = await fetch(url, {
             next: { revalidate: 3600 },
         });
 
         if (!res.ok) {
+            const errorData = await res.json();
+            console.error("Instagram API error:", errorData);
             throw new Error(`Instagram API error: ${res.status}`);
         }
 
         const data = await res.json();
 
-        if (data.error) {
+        if (!data.error) {
             console.error("Instagram API error:", data.error);
             return [];
         }
