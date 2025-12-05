@@ -2,10 +2,9 @@
 
 import { savePost, deletePost, saveImage, BlogPost, getAllPosts } from "@/services/blogService";
 import { revalidatePath } from "next/cache";
-import { isAdminAuthenticated } from "./auth-actions"; // Importe a verificação
+import { isAdminAuthenticated } from "./auth-actions"; 
 
 export async function handlePostAction(formData: FormData) {
-  // 1. VERIFICAÇÃO DE SEGURANÇA
   const isAdmin = await isAdminAuthenticated();
   if (!isAdmin) {
     throw new Error("Acesso negado. Você não é administrador.");
@@ -27,13 +26,19 @@ export async function handlePostAction(formData: FormData) {
     imageUrl = await saveImage(imageFile);
   }
 
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  const formattedDate = `${day}/${month}/${year}`;
+
   const post: BlogPost = {
     id: existingPost ? existingPost.id : Date.now(),
     slug: title.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "-"),
     title: title,
     excerpt: content.substring(0, 150) + "...",
     content: existingPost ? content : `<p>${content.replace(/\n/g, "<br/>")}</p>`,
-    date: existingPost ? existingPost.date : new Date().toLocaleDateString("pt-BR"),
+    date: existingPost ? existingPost.date : formattedDate,
     author: "Admin",
     category: "Geral",
     imageUrl: imageUrl
@@ -44,7 +49,6 @@ export async function handlePostAction(formData: FormData) {
 }
 
 export async function handleDeleteAction(id: number) {
-  // 2. VERIFICAÇÃO DE SEGURANÇA
   const isAdmin = await isAdminAuthenticated();
   if (!isAdmin) {
     throw new Error("Acesso negado.");
