@@ -5,7 +5,7 @@ interface ContactFormState {
     message: string;
 }
 
-export async function sendToMOndayAction(prevState: any, formData: FormData): Promise<ContactFormState> {
+export async function sendToMOndayAction(prevState: ContactFormState | null, formData: FormData): Promise<ContactFormState> {
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const phone = formData.get('phone') as string;
