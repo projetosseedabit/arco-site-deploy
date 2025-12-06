@@ -15,6 +15,8 @@ const config: Config = {
         'custom-teal': '#3DBEBE',
         'custom-dark-teal': '#2A8080',
         'custom-light-gray': '#737B8C',
+        'custom-orange': '#ED7123',
+        'custom-pink': '#7082C0',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

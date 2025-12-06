@@ -10,7 +10,7 @@ const services = [
     description: "Soluções criativas e inovadoras em design gráfico, identidade visual, UX/UI e branding para empresas e projetos.",
     items: ["Editoração", "Direção de Arte", "Identidade Visual"],
     icon: PenTool,
-    iconColor: "bg-pink-400",
+    iconColor: "bg-custom-pink",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const services = [
     description: "Projetos completos que unem estética e funcionalidade, transformando espaços em experiências únicas.",
     items: ["Consultoria de Interiores", "Design de Interiores", "Projeto Arquitetônico", "Concepção Externa"],
     icon: Ruler,
-    iconColor: "bg-orange-400",
+    iconColor: "bg-custom-orange",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const services = [
     description: "Excelência técnica e segurança para sua obra, com projetos estruturais e complementares de alta precisão.",
     items: ["Projeto Elétrico", "Projeto Estrutural", "Projeto Hidrossanitário"],
     icon: HardHat,
-    iconColor: "bg-blue-400",
+    iconColor: "bg-custom-teal",
   },
 ];
 
@@ -81,7 +81,7 @@ const ServicesSection = () => {
               <ul className="text-left w-full space-y-2 mb-8 pl-4">
                 {service.items.map((item, idx) => (
                   <li key={idx} className="flex items-center text-xs font-semibold text-gray-700">
-                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${service.title === 'Design' ? 'bg-pink-400' : service.title === 'Arquitetura' ? 'bg-orange-400' : 'bg-blue-400'}`}></span>
+                    <span className={`w-1.5 h-1.5 rounded-full mr-2 ${service.title === 'Design' ? 'bg-custom-pink' : service.title === 'Arquitetura' ? 'bg-custom-orange' : 'bg-custom-teal'}`}></span>
                     {item}
                   </li>
                 ))}
