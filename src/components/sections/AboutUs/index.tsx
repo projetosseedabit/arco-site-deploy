@@ -21,12 +21,9 @@ const aboutData = [
 
 const AboutUs = () => {
   return (
-    <section id="sobre-nos" className="relative bg-transparent -mt-20 z-10 py-20 lg:py-32">
-        <div
-            className="absolute inset-x-0 top-0 h-full bg-white"
-            style={{ clipPath: 'ellipse(150% 100% at 50% 100%)' }}
-        ></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="sobre-nos" className="relative bg-white py-20 lg:py-32">
+       
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
                 <div className="inline-block">
                     <span className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm border border-primary/20">
@@ -43,15 +40,18 @@ const AboutUs = () => {
 
             <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {aboutData.map((item, index) => (
-                    <Card key={index} className="text-center shadow-lg rounded-xl p-6 border-0 bg-white transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/40">
+                    <Card key={index} className="shadow-lg rounded-xl p-6 border-0 bg-white transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/40">
                         <CardHeader className="p-0 mb-4">
+                            {/* Ícone centralizado com mx-auto */}
                             <div className="mx-auto bg-primary/10 rounded-full h-16 w-16 flex items-center justify-center">
                                 {item.icon}
                             </div>
                         </CardHeader>
                         <CardContent className="p-0">
-                            <CardTitle className="mb-2 text-2xl font-bold text-custom-gray">{item.title}</CardTitle>
-                            <p className="text-custom-light-gray text-justify">{item.description}</p>
+                            {}
+                            <CardTitle className="mb-2 text-2xl font-bold text-custom-gray text-center">{item.title}</CardTitle>
+                            {}
+                            <p className="text-custom-light-gray text-center leading-relaxed">{item.description}</p>
                         </CardContent>
                     </Card>
                 ))}
