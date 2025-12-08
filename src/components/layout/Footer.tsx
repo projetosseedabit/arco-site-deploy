@@ -6,10 +6,10 @@ import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { useCallback } from "react";
 
 const services = [
-  { color: "bg-pink-400", label: "Design Gráfico & UI" },
-  { color: "bg-orange-400", label: "Arquitetura & Interiores" },
-  { color: "bg-blue-400", label: "Projetos de Engenharia" },
-  { color: "bg-[#3DBEBE]", label: "Consultoria Técnica" }
+  { color: "bg-custom-pink", label: "Design Gráfico & UI" },
+  { color: "bg-custom-orange", label: "Arquitetura & Interiores" },
+  { color: "bg-custom-teal", label: "Projetos de Engenharia" },
+  { color: "bg-[#A9C229]", label: "Consultoria Técnica" }
 ];
 
 const socialLinks = [
