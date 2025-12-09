@@ -17,6 +17,13 @@ export default function CaseCard({ case: caseItem }: CaseCardProps) {
           layout="fill"
           objectFit="cover"
         />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `linear-gradient(to top, ${caseItem.categoryColor}, transparent)`,
+            opacity: 0.2,
+          }}
+        />
         <div 
           className="absolute top-4 left-4 px-4 py-2 rounded-full text-white text-sm font-semibold"
           style={{ backgroundColor: caseItem.categoryColor }}

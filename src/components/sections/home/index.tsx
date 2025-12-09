@@ -34,11 +34,11 @@ const Hero = () => {
 
       <div className="w-full max-w-screen-xl relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 space mt-20">
+          <div className="space-y-8 space mt-28">
             <div className="inline-block">
             </div>
 
-            <h1 className="text-hero-title font-bold leading-tight text-custom-gray">
+            <h1 className="text-hero-title font-bold leading-none -tracking-tight text-custom-gray">
               <span className="whitespace-nowrap">Prazer, somos a</span> <br />
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent whitespace-nowrap">
                 Arco Consultoria

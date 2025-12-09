@@ -9,7 +9,7 @@ const cases: Case[] = [
     description: "O maior projeto de Design de Interiores da Arco, realizado para uma família em cobertura no Paiva.",
     tags: ["Interiores", "Residencial", "Alto Padrão"],
     image: "/images/Cobertura Ronaldo.jpg",
-    categoryColor: "#3b82f6", // blue-500
+    categoryColor: "#7082C0",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const cases: Case[] = [
     description: "Laudo técnico e projeto de reforço estrutural para edifício comercial de 15 andares da cidade.",
     tags: ["Estrutural", "Laudo Técnico", "Comercial"],
     image: "/images/hero-image.jpg", 
-    categoryColor: "#f97316", // orange-500
+    categoryColor: "#ED7123",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const cases: Case[] = [
     description: "Laudo técnico e projeto de reforço estrutural para edifício comercial de 15 andares da cidade.",
     tags: ["Estrutural", "Laudo Técnico", "Comercial"],
     image: "/images/hero-image.jpg", 
-    categoryColor: "#10b981", // emerald-500
+    categoryColor: "#3DBEBE",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const cases: Case[] = [
     description: "Projeto de residência executada do zero à beira da praia em Sirinhaém-PE, focando no conforto familiar.",
     tags: ["Residencial", "Praia", "Obras"],
     image: "/images/Casa Sirinhaém.png",
-    categoryColor: "#f97316", // orange-500
+    categoryColor: "#ED7123",
   },
   {
     id: 5,
@@ -45,7 +45,7 @@ const cases: Case[] = [
     description: "Projeto de interiores da academia e do novo “Memorial do Náutico”, localizado no estádio dos Aflitos.",
     tags: ["Interiores", "Comercial", "Esportivo"],
     image: "/images/Academia Náutico.jpg",
-    categoryColor: "#3b82f6", // blue-500
+    categoryColor: "#7082C0",
   },
   {
     id: 6,
@@ -54,7 +54,7 @@ const cases: Case[] = [
     description: "Concepção externa e paisagismo de uma residência em Aldeia-PE, integrando conforto ao espaço verde.",
     tags: ["Paisagismo", "Residencial", "Externo"],
     image: "/images/Casa do Alto.jpg",
-    categoryColor: "#f97316", // orange-500
+    categoryColor: "#ED7123",
   },
 ];
 
