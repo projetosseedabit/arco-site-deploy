@@ -87,11 +87,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-[#3DBEBE] shrink-0" />
-                <a href="mailto:contato@arcoconsultoria.com" className="hover:text-white transition-colors">contato@arcoconsultoria.com</a>
+                <a href="mailto:contato@arcoconsultoria.com" className="hover:text-white transition-colors">comercial@arcoconsultoria.org</a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-[#3DBEBE] shrink-0" />
-                <a href="tel:+5581999999999" className="hover:text-white transition-colors">(81) 99999-9999</a>
+                <a href="tel:+5581999999999" className="hover:text-white transition-colors">(81) 99916-3551</a>
               </li>
             </ul>
           </div>
