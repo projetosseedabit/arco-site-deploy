@@ -24,11 +24,22 @@ export async function sendToMOndayAction(prevState: ContactFormState | null, for
         return { success: false, message: 'Erro interno do servidor. Tente novamente mais tarde.' };
     }
 
+    const subjectMap: Record<string, string> = {
+        "orcamento": "Orçamento de Projeto",
+        "duvida": "Dúvida Técnica",
+        "parceria": "Parceria",
+        "outro": "Outro"
+    };
+
+    const subjectText = subjectMap[subject] || subject;
+
+    const finalMessage = `[Assunto: ${subjectText}]\n\n${message}`;
+    
     const columnValues = {
         "email_mky9nth6": { "email": email, "text": email },
         "phone_mky9kd7t": { "phone": phone, "countryShortCode": "BR" },
-        "text_mky9dsdp": { "text": message },
-        "color_mky9vxem": subject
+        "text_mky9dsdp": finalMessage, 
+        "color_mky9vxem": { "label": "Em andamento" }
     };
 
     const query = `mutation ($boardId: ID!, $itemName: String!, $columnVals: JSON!) {
@@ -47,7 +58,7 @@ export async function sendToMOndayAction(prevState: ContactFormState | null, for
             body: JSON.stringify({
                 query: query,
                 variables: {
-                    boardId: MONDAY_BOARD_ID,
+                    boardId: Number(MONDAY_BOARD_ID),
                     itemName: name,
                     columnVals: JSON.stringify(columnValues)
                 }
@@ -55,8 +66,9 @@ export async function sendToMOndayAction(prevState: ContactFormState | null, for
         });
 
         const data = await response.json();
+
         if (data.errors) {
-            console.error('Monday.com API error:', data.errors);
+            console.error('Monday.com API error:', JSON.stringify(data.errors, null, 2));
             return { success: false, message: 'Erro ao enviar a mensagem. Tente novamente mais tarde.' };
         }
 
@@ -66,5 +78,3 @@ export async function sendToMOndayAction(prevState: ContactFormState | null, for
         return { success: false, message: 'Erro ao enviar a mensagem. Tente novamente mais tarde.' };
     }
 }
-            
-            
