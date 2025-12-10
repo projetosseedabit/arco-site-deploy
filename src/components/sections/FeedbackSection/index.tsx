@@ -2,36 +2,32 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
-import Image from 'next/image';
+// import Image from 'next/image'; // Removido pois não usamos mais fotos
 
 const feedbackData = [
   {
     stars: 5,
-    comment: "O trabalho de identidade visual superou todas as expectativas. A equipe captou perfeitamente a essência do nosso restaurante e traduziu em um design incrível.",
-    author: "Maria Carmen",
-    role: "Proprietária - Restaurante Carmen",
-    avatar: "/images/avatar1.jpg", 
+    comment: "Isso está formidável. Parabéns. A comunidade exulta de alegria pelo espetacular projeto arquitetônico. Essa nova imagem da igreja é simplesmente espetacular. Muito, mas muito obrigado pelo retorno da vossa parte. 2021 foi um dos anos mais importantes na minha vida pois conheci uma família fabulosa que é a Arco.",
+    author: "Charles",
+    role: "Projeto Missão São Miguel",
   },
   {
     stars: 5,
-    comment: "A consultoria de design de interiores transformou nosso apartamento. O espaço ficou funcional, elegante e a nossa cara. Profissionais de altíssimo nível!",
-    author: "João Silva",
-    role: "Cliente Particular",
-    avatar: "/images/avatar1.jpg", 
+    comment: "No começo eu tinha dúvidas mas confiei na indicação de quem já conhecia o trabalho deles. E não houve arrependimentos, pois qualidade, pontualidade, compromisso e profissionalismo são características da Arco. Os prazos foram cumpridos e foram bastante atenciosos. Só tenho a agradecer.",
+    author: "Weslley",
+    role: "Projeto iPhone Store",
   },
   {
     stars: 5,
-    comment: "O projeto estrutural que a Arco desenvolveu foi impecável. Segurança, precisão e um ótimo custo-benefício. Recomendo fortemente a equipe de engenharia.",
-    author: "Carlos Andrade",
-    role: "Diretor - Construtora Segura",
-    avatar: "/images/avatar1.jpg", 
+    comment: "Gostei bastante do atendimento durante a execução e também do projeto final. Fiquei satisfeito e recomendo!",
+    author: "Elzo",
+    role: "Projeto Apt. Boa Viagem",
   },
-    {
+  {
     stars: 5,
-    comment: "Ficamos maravilhados com a nova identidade visual da nossa marca. A Arco conseguiu traduzir nossos valores em um design moderno e impactante.",
-    author: "Sofia Pereira",
-    role: "CEO - Tech Inova",
-    avatar: "/images/avatar1.jpg", 
+    comment: "Foi um serviço surpreendente, não esperava tão boa qualidade. Gostei do resultado e com certeza indicarei a outras pessoas.",
+    author: "Thiago",
+    role: "Projeto Quarto Thiago",
   },
 ];
 
@@ -40,24 +36,29 @@ type FeedbackCardProps = {
   comment: string;
   author: string;
   role: string;
-  avatar: string;
   isActive: boolean;
 };
 
-const FeedbackCard = ({ stars, comment, author, role, avatar, isActive }: FeedbackCardProps) => (
-  <div className={`transition-all duration-500 ${isActive ? 'translate-y-4' : 'blur-sm scale-95 opacity-70'}`}>
+const FeedbackCard = ({ stars, comment, author, role, isActive }: FeedbackCardProps) => (
+  <div className={`transition-all duration-500 h-full ${isActive ? 'translate-y-4' : 'blur-sm scale-95 opacity-70'}`}>
     {/* O card continua branco, mas com sombra e borda para destacar do fundo branco da seção */}
-    <div className="bg-white rounded-2xl p-8 shadow-lg relative w-full max-w-lg mx-auto border border-gray-100">
-      <Quote className="absolute top-4 right-6 w-12 h-12 text-orange-100" />
-      <div className="flex mb-4">
-        {[...Array(stars)].map((_, i) => <Star key={i} className="w-5 h-5 text-orange-400 fill-orange-400" />)}
+    <div className="bg-white rounded-2xl p-8 shadow-lg relative w-full max-w-lg mx-auto border border-gray-100 flex flex-col justify-between h-full min-h-[300px]">
+      {/* Ícone de aspas com a nova cor e opacidade para ficar sutil */}
+      <Quote className="absolute top-4 right-6 w-12 h-12 text-[#EC7022]/20" />
+      
+      <div>
+        <div className="flex mb-4">
+            {/* Estrelas com a nova cor sólida */}
+            {[...Array(stars)].map((_, i) => <Star key={i} className="w-5 h-5 text-[#EC7022] fill-[#EC7022]" />)}
+        </div>
+        <p className="text-gray-600 mb-6 text-base leading-relaxed italic">“{comment}”</p>
       </div>
-      <p className="text-gray-600 mb-6 text-base leading-relaxed">“{comment}”</p>
-      <div className="flex items-center">
-        <Image src={avatar} alt={author} width={48} height={48} className="w-12 h-12 rounded-full mr-4 object-cover" />
+
+      <div className="flex items-center pt-4 border-t border-gray-50">
+        {/* Foto removida conforme solicitado */}
         <div>
-          <p className="font-bold text-gray-800">{author}</p>
-          <p className="text-sm text-gray-500">{role}</p>
+          <p className="font-bold text-gray-800 text-lg">{author}</p>
+          <p className="text-sm text-gray-500 font-medium">{role}</p>
         </div>
       </div>
     </div>
@@ -80,7 +81,7 @@ export default function FeedbackSection() {
     // Autoplay
     const autoplay = setInterval(() => {
         emblaApi.scrollNext();
-    }, 5000); 
+    }, 6000); // Aumentei levemente para 6s pois alguns textos são longos
 
     return () => {
         clearInterval(autoplay);
@@ -89,15 +90,10 @@ export default function FeedbackSection() {
   }, [emblaApi]);
 
   return (
-    <section id="feedback" className=" bg-gray-50 py-24 sm:py-32 overflow-hidden">
+    <section id="feedback" className="bg-gray-50 py-24 sm:py-32 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho Padronizado */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-block">
-                {/*<span className="px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold text-sm border border-primary/20">
-                    FEEDBACK
-                </span>*/}
-            </div>
             <h2 className="mt-6 text-4xl sm:text-5xl font-bold text-custom-gray">
                 O Que Dizem Nossos Clientes
             </h2>
@@ -112,7 +108,7 @@ export default function FeedbackSection() {
             className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
             ref={emblaRef}
           >
-            <div className="flex -ml-4 pt-4 pb-12" style={{ cursor: 'grab' }}>
+            <div className="flex -ml-4 pt-4 pb-12 items-stretch" style={{ cursor: 'grab' }}>
               {feedbackData.map((feedback, index) => (
                 <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_40%] pl-4" key={index}>
                   <FeedbackCard {...feedback} isActive={index === selectedIndex} />
